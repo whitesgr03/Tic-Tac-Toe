@@ -1,0 +1,64 @@
+/* normalize */
+@import url('https://necolas.github.io/normalize.css/latest/normalize.css');
+/* Noto Sans */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+:root {
+    --button-bgc-hover: rgb(255, 218, 87);
+    --button-text-color: rgb(255, 255, 255);
+    --main-color: rgb(0, 0, 0);
+    --border-color: rgb(53, 39, 141);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+ul,
+h1,
+h2,
+h3,
+h4,
+button,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gameBoard {
+    background-color: var(--border-color);
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(3, 100px);
+    gap: 5px;
+}
+
+.cell {
+    background-color: var(--button-text-color);
+    cursor: pointer;
+}
+
+.restartButton {
+    background-color: var(--main-color);
+    color: var(--button-text-color);
+    border-radius: 20px;
+    padding: 10px 30px;
+    border: 3px solid var(--main-color);
+    transition-duration: .15s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    cursor: pointer;
+}
+
+.restartButton:hover {
+    background: var(--button-bgc-hover);
+    color: var(--main-color);
+}
