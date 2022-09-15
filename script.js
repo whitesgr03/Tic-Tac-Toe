@@ -9,10 +9,19 @@ const GameBoard = (() => {
     }
 
     // cache DOM
+    const cell = Array.from(document.querySelectorAll('.cell'));
     const gameBoard = document.querySelector('.gameBoard');
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
+    function render() {
+
+        for (let i = 0; i < symbols.length; i++){
+            cell[i * 3 + 0].textContent = symbols[i][0]
+            cell[i * 3 + 1].textContent = symbols[i][1]
+            cell[i * 3 + 2].textContent = symbols[i][2]
+        }
+    }
 
     function addSymbols(e) {
 
@@ -46,5 +55,10 @@ const GameBoard = (() => {
         }
         
         symbols[firstIndex][second] = gameSymbol;
+        render();
     }
     }
+
+
+})()
+
