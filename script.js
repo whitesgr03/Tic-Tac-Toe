@@ -11,9 +11,12 @@ const GameBoard = (() => {
     // cache DOM
     const cell = Array.from(document.querySelectorAll('.cell'));
     const gameBoard = document.querySelector('.gameBoard');
+    const resetButton = document.querySelector('.restartButton');
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
+    resetButton.addEventListener('click', reset);
+
     function render() {
 
         for (let i = 0; i < symbols.length; i++){
@@ -57,6 +60,20 @@ const GameBoard = (() => {
         symbols[firstIndex][second] = gameSymbol;
         render();
     }
+
+    function reset() {
+        if (symbols.length = 0) {
+            return
+        }
+
+        symbols.length = 0;
+
+        for (let i = 0; i < 3; i++) {
+            symbols.push(Array.from({ length: 3 }))
+        }
+
+        firstPlayer = true;
+        render();
     }
 
 
