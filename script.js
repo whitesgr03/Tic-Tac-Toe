@@ -76,6 +76,42 @@ const GameBoard = (() => {
         render();
     }
 
+    function checkLine() {
 
+        // check row line
+        showWinner(symbols)
+
+        // check column line
+        const column = [];
+        for (let i = 0; i < symbols.length; i++) {
+            const arr = [symbols[0][i], symbols[1][i], symbols[2][i]]
+            column.push(arr)
+        }
+
+        showWinner(column);
+
+        // check Slant Line
+        const slant = [
+            [symbols[0][0], symbols[1][1], symbols[2][2]],
+            [symbols[0][2], symbols[1][1], symbols[2][0]]
+        ]
+
+        showWinner(slant);
+    }
+
+    function showWinner(arr) {
+        arr.forEach(line => {
+
+            if (line.every(symbol => symbol === 'X')) {
+                console.log('Player 1 win')
+                return
+            } 
+
+            if (line.every(symbol => symbol === 'O')) {
+                console.log('Player 2 win')
+                return
+            } 
+        });
+    }
 })()
 
