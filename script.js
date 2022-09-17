@@ -123,15 +123,13 @@ const GameBoard = (() => {
         });
     }
 
-    function checkGameTie(arr) {
-        const allSymbol = [];
-
-        for (let line of arr) {
-            allSymbol.push(...line)
+    function checkGameTie(line) {
+        if (winner) {
+            return
         }
-
-        if (allSymbol.every(symbol => typeof symbol !== 'undefined')) {
-            console.log('It"s a draw');
+        if (line.every(symbol => typeof symbol !== 'undefined')) {
+            winner = false
+            return
         }
     }
 })()
