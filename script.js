@@ -2,6 +2,7 @@
 
 const GameBoard = (() => {
     let firstPlayer = true;
+    let winner = null;
     let symbols = [];
     
     for (let i = 0; i < 3; i++) {
@@ -12,6 +13,7 @@ const GameBoard = (() => {
     const cell = Array.from(document.querySelectorAll('.cell'));
     const gameBoard = document.querySelector('.gameBoard');
     const resetButton = document.querySelector('.restartButton');
+    const gameSettlement = document.querySelector('.settlementMessage')
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
@@ -79,7 +81,12 @@ const GameBoard = (() => {
 
         render();
         firstPlayer = true;
-        render();
+
+        if (winner !== null) {
+            winner = null;
+            gameBoard.classList.remove('gameOver')
+            gameSettlement.classList.remove('active');
+        }
     }
 
     function checkLine() {
