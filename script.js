@@ -107,17 +107,18 @@ const GameBoard = (() => {
         checkGameTie(symbols)
     }
 
-    function showWinner(arr) {
-        arr.forEach(line => {
-
+    function checkLine(lines) {
+        if (winner) {
+            return
+        }
+        lines.forEach(line => {
             if (line.every(symbol => symbol === 'X')) {
-                console.log('Player 1 win')
+                winner = 'X'
                 return
             } 
 
             if (line.every(symbol => symbol === 'O')) {
-                console.log('Player 2 win')
-                return
+                winner = 'O'
             } 
         });
     }
