@@ -58,9 +58,12 @@ const GameBoard = (() => {
         firstPlayer = !firstPlayer;
     }
 
-        symbols[firstIndex][second] = gameSymbol;
-        render();
-        checkLine();
+    function render() {
+        for (let i = 0; i < symbols.length; i++){
+            cell[i * 3 + 0].textContent = symbols[i][0]
+            cell[i * 3 + 1].textContent = symbols[i][1]
+            cell[i * 3 + 2].textContent = symbols[i][2]
+        }
     }
 
     function reset() {
