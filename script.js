@@ -77,6 +77,7 @@ const GameBoard = (() => {
             symbols.push(Array.from({ length: 3 }))
         }
 
+        render();
         firstPlayer = true;
         render();
     }
