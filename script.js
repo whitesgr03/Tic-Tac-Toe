@@ -59,6 +59,7 @@ const GameBoard = (() => {
         
         symbols[firstIndex][second] = gameSymbol;
         render();
+        checkLine();
     }
 
     function reset() {
