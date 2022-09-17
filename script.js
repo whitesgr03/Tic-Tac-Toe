@@ -84,27 +84,29 @@ const GameBoard = (() => {
 
     function checkLine() {
 
-        // check row line
-        showWinner(symbols)
+    function createLine(direction) {
+        let line = [];
 
-        // check column line
-        const column = [];
-        for (let i = 0; i < symbols.length; i++) {
-            const arr = [symbols[0][i], symbols[1][i], symbols[2][i]]
-            column.push(arr)
+        switch (direction) {
+            case 'column':
+                for (let i = 0; i < symbols.length; i++) {
+                    const arr = [symbols[0][i], symbols[1][i], symbols[2][i]]
+                    line.push(arr)
+                }
+                break;
+            case 'slant':
+                line = [
+                    [symbols[0][0], symbols[1][1], symbols[2][2]],
+                    [symbols[0][2], symbols[1][1], symbols[2][0]]
+                ]
+                break;
+            default:
+                for (let symbol of symbols) {
+                    line.push(...symbol)
+                }
         }
 
-        showWinner(column);
-
-        // check Slant Line
-        const slant = [
-            [symbols[0][0], symbols[1][1], symbols[2][2]],
-            [symbols[0][2], symbols[1][1], symbols[2][0]]
-        ]
-
-        showWinner(slant);
-
-        checkGameTie(symbols)
+        return line
     }
 
     function checkLine(lines) {
