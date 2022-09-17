@@ -43,6 +43,10 @@ main {
     gap: 5px;
 }
 
+.gameBoard.gameOver + .restartButton {
+    z-index: 1;
+}
+
 .cell {
     background-color: var(--button-text-color);
     cursor: pointer;
@@ -68,4 +72,24 @@ main {
 .restartButton:hover {
     background: var(--button-bgc-hover);
     color: var(--main-color);
+}
+
+.settlementMessage {
+    position: fixed;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, .1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    gap: 20px;
+    color: var(--main-color)
+}
+
+.settlementMessage.active {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
