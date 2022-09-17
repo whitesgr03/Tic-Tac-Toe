@@ -89,7 +89,30 @@ const GameBoard = (() => {
         }
     }
 
-    function checkLine() {
+    function showWinner() {
+
+        // check each row line
+        checkLine(symbols)
+
+        // check each column line
+        checkLine(createLine('column'));
+
+        // check each Slant Line
+        checkLine(createLine('slant'));
+
+        checkGameTie(createLine())
+
+        if (winner !== null) {
+            gameBoard.classList.add('gameOver');
+            gameSettlement.classList.add('active');
+
+            if (!winner) {
+                gameSettlement.innerHTML = `<h2>It's a Draw</h2>`
+            } else {
+                gameSettlement.innerHTML = `<h2>The winner is</h2><h1>${winner}</h1>`
+            }
+        }
+    }
 
     function createLine(direction) {
         let line = [];
