@@ -98,6 +98,8 @@ const GameBoard = (() => {
         ]
 
         showWinner(slant);
+
+        checkGameTie(symbols)
     }
 
     function showWinner(arr) {
@@ -113,6 +115,18 @@ const GameBoard = (() => {
                 return
             } 
         });
+    }
+
+    function checkGameTie(arr) {
+        const allSymbol = [];
+
+        for (let line of arr) {
+            allSymbol.push(...line)
+        }
+
+        if (allSymbol.every(symbol => typeof symbol !== 'undefined')) {
+            console.log('It"s a draw');
+        }
     }
 })()
 
