@@ -17,22 +17,31 @@ const GameBoard = (() => {
     gameBoard.addEventListener('click', addSymbols);
     resetButton.addEventListener('click', reset);
 
-    function render() {
-
-        for (let i = 0; i < symbols.length; i++){
-            cell[i * 3 + 0].textContent = symbols[i][0]
-            cell[i * 3 + 1].textContent = symbols[i][1]
-            cell[i * 3 + 2].textContent = symbols[i][2]
-        }
-    }
-
     function addSymbols(e) {
-
-        if (e.target.textContent) {
+        if (
+            this.classList.contains('gameOver')||
+            !e.target.classList.contains('cell') ||
+            e.target.textContent
+        ) {
             return
         }
 
-        const index = cell.findIndex(item => item === e.target)
+        const cellIndex = cell.findIndex(item => item === e.target)
+
+        let line = null;
+        let index = null;
+
+        if (cellIndex <= 2) {
+            line = 0;
+            index = cellIndex;
+        } else if (cellIndex >= 6){
+            line = 2;
+            index = cellIndex - 6
+        } else {
+            line = 1;
+            index = cellIndex - 3
+        }
+        
         let gameSymbol = null;
 
         if (firstPlayer) {
@@ -41,22 +50,14 @@ const GameBoard = (() => {
             gameSymbol = 'O'
         }
 
+        symbols[line][index] = gameSymbol;
+
+        render();
+        showWinner();
+
         firstPlayer = !firstPlayer;
+    }
 
-        let firstIndex = null;
-        let second = null;
-
-        if (index <= 2) {
-            firstIndex = 0;
-            second = index;
-        } else if (index >= 6){
-            firstIndex = 2;
-            second = index - 6
-        } else {
-            firstIndex = 1;
-            second = index - 3
-        }
-        
         symbols[firstIndex][second] = gameSymbol;
         render();
         checkLine();
