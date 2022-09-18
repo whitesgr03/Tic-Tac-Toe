@@ -28,8 +28,17 @@ p {
     padding: 0;
 }
 
-main {
+body {
     height: 100vh;
+}
+
+input {
+    width: 100%;
+    height: 1.5rem;
+}
+
+main {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
