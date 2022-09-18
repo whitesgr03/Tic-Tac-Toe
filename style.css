@@ -194,7 +194,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin-top: ;
+    margin-top: 5px;
 }
 
 .character .confirmButton {
