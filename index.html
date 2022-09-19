@@ -10,7 +10,7 @@
 </head>
 <body>
     <main>
-        <h1 class="title">Tic Tac Toe</h1>
+        <h2>Score Board</h2>
         <div class="gameBoard">
             <div class="cell"></div>
             <div class="cell"></div>
@@ -26,28 +26,35 @@
     </main>
     <div class="menu active">
         <div class="wrap">
+            <h1 class="title">Tic Tac Toe</h1>
             <div class="character">
-                <img src="./player.svg" alt="Player 1 avatar" class="avatar">
-                <p class="name">Player 1
-                    <span class="editButton"></span>
-                </p>
-                <div class="edit">
-                    <input class="wi" type="text" value="aa" data-name="Player 1">
-                    <div>
-                        <span class="confirmButton"></span>
-                        <span class="cancelButton"></span>
+                <div class="avatar">
+                    <img src="./player.svg" alt="Player 1 avatar" >
+                    <div class="name">
+                        <p>Player 1</p>
+                        <span class="editButton"></span>
+                    </div>
+                    <div class="edit">
+                        <input class="wi" type="text" value="Player 1" maxlength="8">
+                        <div>
+                            <span class="confirmButton"></span>
+                            <span class="cancelButton"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <span>VS</span>
-            <div class="character">
-                <img src="./player.svg" alt="Player 2 avatar" class="avatar">
-                <p class="name">Player 2<span class="editButton"></span></p>
-                <div class="edit">
-                    <input type="text" value="gg" data-name="Player 2">
-                    <div>
-                        <span class="confirmButton"></span>
-                        <span class="cancelButton"></span>
+                <span class="versus">VS</span>
+                <div class="avatar">
+                    <img src="./player.svg" alt="Player 2 avatar">
+                    <div class="name">
+                        <p>Player 2</p>
+                        <span class="editButton"></span>
+                    </div>
+                    <div class="edit">
+                        <input type="text" value="Player 2" maxlength="8">
+                        <div>
+                            <span class="confirmButton"></span>
+                            <span class="cancelButton"></span>
+                        </div>
                     </div>
                 </div>
             </div>
