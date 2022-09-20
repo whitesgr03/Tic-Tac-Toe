@@ -87,17 +87,19 @@ const gameBoard = (() => {
     // cache DOM
     const cell = Array.from(document.querySelectorAll('.cell'));
     const gameBoard = document.querySelector('.gameBoard');
-    const resetButton = document.querySelector('.restartButton');
+    const resetButton = document.querySelector('.resetButton');
     const gameSettlement = document.querySelector('.settlementMessage')
+    const main = document.querySelector('main')
     const score = document.querySelector('.score')
+    const players = document.querySelectorAll('main .avatar')
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
-    resetButton.addEventListener('click', reset);
+    resetButton.addEventListener('click', resetGame);
 
     function addSymbols(e) {
         if (
-            this.classList.contains('gameOver')||
+            main.classList.contains('gameOver')||
             !e.target.classList.contains('cell') ||
             e.target.textContent
         ) {
@@ -133,7 +135,7 @@ const gameBoard = (() => {
         render();
         showWinner();
 
-        firstPlayer = !firstPlayer;
+        firstPlayer = !firstPlayer;        
     }
 
     function render() {
@@ -144,7 +146,7 @@ const gameBoard = (() => {
         }
     }
 
-    function reset() {
+    function resetGame() {
         if (symbols.length = 0) {
             return
         }
@@ -157,11 +159,13 @@ const gameBoard = (() => {
 
         render();
         firstPlayer = true;
+        
 
         if (winner !== null) {
             winner = null;
-            gameBoard.classList.remove('gameOver')
+            main.classList.remove('gameOver')
             gameSettlement.classList.remove('active');
+            players[0].classList.add('mover');
         }
     }
 
@@ -179,7 +183,7 @@ const gameBoard = (() => {
         checkGameTie(createLine())
 
         if (winner !== null) {
-            gameBoard.classList.add('gameOver');
+            main.classList.add('gameOver');
             gameSettlement.classList.add('active');
 
             if (!winner) {
