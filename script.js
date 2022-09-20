@@ -288,9 +288,16 @@ const gameBoard = (() => {
     function restartGame() {
 
         if (confirm('Do you want to restart game?')) {
+            const round = score.previousElementSibling;
+            const player1Score = score.firstElementChild;
+            const player2Score = score.lastElementChild;
+
+            round.textContent = `Round 1`
+            player1Score.textContent = `${names[winner]} : 0`;
+            player2Score.textContent = `${names[winner]} : 0`;
+
             resetGame();
             parent.classList.add('active')
         }
     }
 })()
-
