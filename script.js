@@ -92,6 +92,8 @@ const gameBoard = (() => {
     const main = document.querySelector('main')
     const score = document.querySelector('.score')
     const players = document.querySelectorAll('main .avatar')
+    const parent = document.querySelector('.menu');
+
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
@@ -131,6 +133,10 @@ const gameBoard = (() => {
         }
 
         symbols[line][index] = gameSymbol;
+
+        for (let player of players) {
+            player.classList.toggle('mover');
+        }
 
         render();
         showWinner();
@@ -185,6 +191,10 @@ const gameBoard = (() => {
         if (winner !== null) {
             main.classList.add('gameOver');
             gameSettlement.classList.add('active');
+
+            for (let player of players) {
+                player.classList.remove('mover');
+            }
 
             if (!winner) {
                 gameSettlement.innerHTML = `<h2>It's a Draw</h2>`
