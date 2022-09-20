@@ -164,5 +164,13 @@ const GameBoard = (() => {
             return
         }
     }
+
+    function addRound() {
+        const round = score.previousElementSibling;
+
+        currentRound++
+        round.textContent = `Round ${currentRound}`
+    }
+
 })()
 
