@@ -109,7 +109,7 @@ main > div:nth-of-type(2) {
 
 .settlementMessage {
     position: fixed;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, .1);
     display: flex;
     flex-direction: column;
@@ -195,7 +195,7 @@ main > div:nth-of-type(2) {
 }
 
 .avatar {
-    flex: 0 1 100px;
+    flex: 0 0 100px;
     text-align: center;
     vertical-align: middle;
 }
