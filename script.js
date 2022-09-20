@@ -92,12 +92,14 @@ const gameBoard = (() => {
     const main = document.querySelector('main')
     const score = document.querySelector('.score')
     const players = document.querySelectorAll('main .avatar')
+    const restartButton = document.querySelector('.restart')
     const parent = document.querySelector('.menu');
 
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
     resetButton.addEventListener('click', resetGame);
+    restartButton.addEventListener('click', restartGame)
 
     function addSymbols(e) {
         if (
@@ -275,5 +277,12 @@ const gameBoard = (() => {
         player[winner].textContent = `${names[winner]} : ${currentScore[winner]}`
     }
 
+    function restartGame() {
+
+        if (confirm('Do you want to restart game?')) {
+            resetGame();
+            parent.classList.add('active')
+        }
+    }
 })()
 
