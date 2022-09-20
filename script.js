@@ -1,10 +1,17 @@
 'use strict'
 
-const GameBoard = (() => {
+
+const gameBoard = (() => {
+    let currentRound = 1;
+    let currentScore = {
+        'X': 0,
+        'O': 0,
+    }
     let firstPlayer = true;
     let winner = null;
     let symbols = [];
-    
+    const names = controller.getName()
+
     for (let i = 0; i < 3; i++) {
         symbols.push(Array.from({ length: 3 }))
     }
@@ -14,6 +21,7 @@ const GameBoard = (() => {
     const gameBoard = document.querySelector('.gameBoard');
     const resetButton = document.querySelector('.restartButton');
     const gameSettlement = document.querySelector('.settlementMessage')
+    const score = document.querySelector('.score')
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
@@ -170,6 +178,16 @@ const GameBoard = (() => {
 
         currentRound++
         round.textContent = `Round ${currentRound}`
+    }
+
+    function addScore(winner) {
+        const player = {
+            'X': score.firstElementChild,
+            'O': score.lastElementChild,
+        }
+            
+        currentScore[winner]++
+        player[winner].textContent = `${names[winner]} : ${currentScore[winner]}`
     }
 
 })()
