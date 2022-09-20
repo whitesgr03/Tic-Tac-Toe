@@ -1,5 +1,73 @@
 'use strict'
 
+const controller = (() => {
+
+    let playerName = {
+        'X': 'Player 1',
+        'O': 'Player 2',
+    }
+
+     // cache DOM
+    const startButton = document.querySelector('.startButton')
+    const pens = document.querySelectorAll('.editButton')
+    const cancelButtons = document.querySelectorAll('.cancelButton')
+    const confirmButtons = document.querySelectorAll('.confirmButton')
+    const score = document.querySelector('.score')
+
+    // bind events
+    startButton.addEventListener('click', startGame)
+    for (let pen of pens) {
+        pen.addEventListener('click', editName);
+    }
+    for (let Button of cancelButtons) {
+        Button.addEventListener('click', cancelEdit);
+    }
+    for (let Button of confirmButtons) {
+        Button.addEventListener('click', saveEdited);
+    }
+
+    function startGame() {
+        const gameBoard = document.querySelector('.gameBoard')
+        const parent = document.querySelector('.menu');
+
+        score.firstElementChild.textContent = `${playerName['X']} : 0`
+        score.lastElementChild.textContent = `${playerName['O']} : 0`
+
+        gameBoard.previousElementSibling.lastElementChild.textContent = playerName['X'];
+        gameBoard.nextElementSibling.lastElementChild.textContent = playerName['O'];
+        parent.classList.remove('active')
+    }
+
+    function editName() {
+        const character = this.closest('.avatar')
+        character.classList.add('editing');
+    }
+
+    function cancelEdit() {
+        const character = this.closest('.avatar')
+        character.classList.remove('editing');
+    }
+
+    function saveEdited() {
+        const character = this.closest('.avatar')
+        const input = this.closest('.edit').firstElementChild
+        const name = this.closest('.edit').previousElementSibling.firstElementChild
+
+        name.textContent = input.value
+        playerName[input.dataset.player] = input.value
+
+        character.classList.remove('editing');
+    }
+
+    function getName() {
+        return playerName;
+    }
+
+    return {
+        getName,
+    }
+})()
+
 
 const gameBoard = (() => {
     let currentRound = 1;
