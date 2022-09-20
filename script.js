@@ -117,8 +117,11 @@ const gameBoard = (() => {
             if (!winner) {
                 gameSettlement.innerHTML = `<h2>It's a Draw</h2>`
             } else {
-                gameSettlement.innerHTML = `<h2>The winner is</h2><h1>${winner}</h1>`
+                gameSettlement.innerHTML = `<h2>The winner is</h2><h1>${names[winner]}</h1>`
+                addScore(winner);
             }
+            
+            addRound();
         }
     }
 
