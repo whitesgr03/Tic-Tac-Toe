@@ -48,7 +48,7 @@ main {
     align-items: center;
 }
 
-main.gameOver .restartButton {
+main.gameOver .resetButton {
     z-index: 1;
 }
 
@@ -128,7 +128,7 @@ main > div:nth-of-type(2) {
 }
 
 .startButton,
-.restartButton {
+.resetButton {
     background-color: var(--main-color);
     color: var(--button-text-color);
     border-radius: 20px;
@@ -141,7 +141,7 @@ main > div:nth-of-type(2) {
 }
 
 .startButton:hover,
-.restartButton:hover {
+.resetButton:hover {
     background: var(--button-bgc-hover);
     color: var(--main-color);
 }
