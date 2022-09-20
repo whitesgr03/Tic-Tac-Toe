@@ -57,9 +57,22 @@ main.gameOver .restartButton {
     text-align: center;
 }
 
-.scoreBoard h2,
+.scoreBoard .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreBoard .title .restart {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    background-image: url(./set.svg);
+    cursor: pointer;
+}
+
 .scoreBoard h3 {
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .scoreBoard .score {
