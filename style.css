@@ -259,3 +259,7 @@ main > div:nth-of-type(2) {
     display: inline-block;
     background-image: url(./close-thick.svg);
 }
+
+.mover {
+    filter: invert(46%) sepia(28%) saturate(3036%) hue-rotate(170deg) brightness(112%) contrast(81%);
+}
