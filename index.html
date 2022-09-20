@@ -11,15 +11,18 @@
 <body>
     <main>
         <div class="scoreBoard">
-            <h2>Score Board</h2>
+            <div class="title">
+                <h2>Score Board</h2>
+                <div class="restart"></div>
+            </div>
             <h3>Round 1</h3>
             <div class="score">
-                <p>Player 1 ---</p>
-                <p>Player 2 ---</p>
+                <h3>Player 1 : 0</h3>
+                <h3>Player 2 : 0</h3>
             </div>
         </div>
         <div>
-            <div class="avatar">
+            <div class="avatar mover">
                 <img src="./player.svg" alt="Player 1 avatar" >
                 <p>Player 1</p>
             </div>
@@ -41,7 +44,7 @@
         </div>
         <button type="button" class="resetButton">New Round</button>
     </main>
-    <div class="menu">
+    <div class="menu active">
         <div class="wrap">
             <h1 class="title">Tic Tac Toe</h1>
             <div class="character">
