@@ -155,8 +155,16 @@ const gameBoard = (() => {
     }
 
     function resetGame() {
-        if (symbols.length = 0) {
+        const line = createLine()
+
+        if (line.every(symbol => typeof symbol === 'undefined')) {
             return
+        }
+
+        if (winner === null) {
+            if (!confirm('Do you want to reset this round?')) {
+                return
+            }
         }
 
         symbols.length = 0;
