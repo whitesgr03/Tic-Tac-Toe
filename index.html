@@ -10,77 +10,113 @@
 </head>
 <body>
     <main>
-        <div class="scoreBoard">
-            <div class="title">
-                <h2>Score Board</h2>
-                <div class="restart"></div>
-            </div>
-            <h3>Round 1</h3>
-            <div class="score">
-                <h3>Player 1 : 0</h3>
-                <h3>Player 2 : 0</h3>
-            </div>
-        </div>
-        <div>
-            <div class="avatar mover">
-                <img src="./player.svg" alt="Player 1 avatar" >
-                <p>Player 1</p>
-            </div>
-            <div class="gameBoard">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="avatar">
-                <img src="./player.svg" alt="Player 2 avatar">
-                <p>Player 2</p>
-            </div>
-        </div>
-        <button type="button" class="resetButton">New Round</button>
-    </main>
-    <div class="menu active">
-        <div class="wrap">
+        <!-- menu selector opponent -->
+        <div class="menu">
             <h1 class="title">Tic Tac Toe</h1>
-            <div class="character">
-                <div class="avatar">
-                    <img src="./player.svg" alt="Player 1 avatar" >
+            <p class="message">choose your opponent</p>
+            <div class="characters">
+                <div class="character">
+                    <img src="./player.svg" alt="Player 1 avatar" class="avatar">
                     <div class="name">
                         <p>Player 1</p>
-                        <span class="editButton"></span>
+                        <button type="button" class="editNameButton"></button>
                     </div>
-                    <div class="edit">
+                    <!-- <div class="field">
                         <input type="text" value="Player 1" data-player="X" maxlength="8">
-                        <div>
-                            <span class="confirmButton"></span>
-                            <span class="cancelButton"></span>
+                        <div class="fieldButtons">
+                            <button type="button" class="confirmButton"></button>
+                            <button type="button" class="cancelButton"></button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <span class="versus">VS</span>
-                <div class="avatar">
-                    <img src="./player.svg" alt="Player 2 avatar">
+                <p class="versus">VS</p>
+
+                <div class="opponentButtons">
+                    <button type="button" data-opponent="player">Player</button>
+                    <button type="button" data-opponent="robot">Computer</button>
+                </div>
+
+                <!-- <div class="character player">
+                    <img src="./player.svg" alt="Player 2 avatar" class="avatar">
                     <div class="name">
                         <p>Player 2</p>
-                        <span class="editButton"></span>
+                        <button type="button" class="editNameButton"></button>
                     </div>
-                    <div class="edit">
+                    <div class="field">
                         <input type="text" value="Player 2" data-player="O" maxlength="8">
-                        <div>
-                            <span class="confirmButton"></span>
-                            <span class="cancelButton"></span>
+                        <div class="fieldButtons">
+                            <button type="button" class="confirmButton"></button>
+                            <button type="button" class="cancelButton"></button>
                         </div>
                     </div>
+                </div> -->
+
+                <!-- <div class="character robot">
+                    <img src="./robot.svg" alt="computer" class="avatar">
+                    <p class="name">Com</p>
+                </div> -->
+            </div>
+            <button type="button" class="startGameButton">Start Game</button>
+        </div>
+
+        <!-- settlement message -->
+        <div class="settlementMessage">
+            <p class="message">The Winner is <span>Player 1</span></p>
+            <button type="button" class="resetButton">New Round</button>
+        </div>
+        
+        <div class="container">
+            <!-- scoreBoard -->
+            <div class="scoreBoard">
+                <h2 class="title">
+                    Score Board
+                    <button type="button" class="menuButton"></button>
+                </h2>
+                <h3 class="round">Round 1</h3>
+                <div>
+                    <h3>
+                        <span class="name">Player 1</span>
+                        : 
+                        <span class="score">0</span>
+                    </h3>
+                    <h3>
+                        <span class="name">Player 2</span>
+                        : 
+                        <span class="score">0</span>
+                    </h3>
                 </div>
             </div>
+            
+            <div class="secondRow">
+                <!-- first player -->
+                <div class="player mover">
+                    <img src="./player.svg" alt="Player 1 avatar" class="avatar">
+                    <p class="name">Player 1</p>
+                </div>
+                <!-- gameBoard -->
+                <div class="gameBoard">
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <!-- second player -->
+                <div class="player">
+                    <img src="./player.svg" alt="Player 2 avatar" class="avatar">
+                    <p class="name">Player 2</p>
+                </div>
+            </div>    
         </div>
-        <button type="button" class="startButton">Start</button>
-    </div>
-    <div class="settlementMessage"></div>
+            </div>    
+        </div>
+    </main>
+    
+    <!-- background blur -->
+    <div class="backgroundBlurEffect"></div>
 </body>
 </html>
