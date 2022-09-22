@@ -95,8 +95,13 @@ main {
     justify-content: space-around;
 }
 
-.menu .message {
+.menu .messageButton {
     margin-top: 20px;
+}
+.menu .messageButton.reselect {
+    font-style: italic;
+    color: var(--option-button-color);
+    border-bottom: 1px solid var(--option-button-color);
 }
 
 .characters {
