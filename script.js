@@ -19,9 +19,11 @@ const controller = (() => {
 
     
     function chooseOpponent(e) {
-        let characterTemplate = null
+        const secondRow = document.querySelector('.secondRow')
+        let characterTemplate = null;
+        let secondRowTemplate = null;
         
-        const div = document.createElement('div')
+        let div = document.createElement('div')
 
         playerName[1] = e.target.dataset.opponent;
         
@@ -41,19 +43,36 @@ const controller = (() => {
                         </div>
                     </div>
                 </div>
-            `
+            `;
+            secondRowTemplate = `
+                <div class="player">
+                    <img src="./img/player.svg" alt="character 2 avatar" class="avatar">
+                    <p class="secondPlayerName">Player 2</p>
+                </div>
+            `;
         } else {
             characterTemplate = `
                 <div class="character robot">
                     <img src="./img/robot.svg" alt="computer" class="avatar">
                     <p>Com</p>
                 </div>
+            `;
+            secondRowTemplate = `
+                <div class="player">
+                    <img src="./img/robot.svg" alt="character 2 avatar" class="avatar">
+                    <p class="secondPlayerName">Com</p>
+                </div>
             `
         }
 
-        div.innerHTML = characterTemplate
         this.style.display = 'none'
+        div.innerHTML = characterTemplate
         characters.append(div)
+
+        div = document.createElement('div')
+        div.innerHTML = secondRowTemplate
+        secondRow.lastElementChild.remove();
+        secondRow.append(div)
         init();
     }
 
