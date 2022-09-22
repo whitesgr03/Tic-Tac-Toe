@@ -112,22 +112,18 @@ main {
     align-items: center;
 }
 
-.character {
-    width: 150px;
-}
-
-.character .name {
-    
+.character > div:first-of-type {
     position: relative;
 }
 
-.character .name p,
+.character p,
 .character input{
     height: 25px;
-    width: auto;
+    width: 100%;
 }
 
 .character .editNameButton {
+    display: none;
     position: absolute;
     left: 100%;
     top: 50%;
@@ -144,6 +140,7 @@ main {
 
 .field {
     position: relative;
+    display: none;
 }
 
 .fieldButtons {
@@ -172,9 +169,23 @@ main {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 150px;
     justify-content: space-evenly;
 }
+
+.character,
+.opponentButtons {
+    width: 120px;
+}
+
+.character.editing > div:first-of-type{
+    display: none;
+}
+
+.character.editing .field {
+    display: block;
+}
+
+
 
 /*⬆︎ menu ⬆︎*/ 
 
@@ -268,6 +279,12 @@ main {
 .opponentButtons button:hover {
     background: var(--button-bgc-hover);
     color: var(--main-color);
+}
+
+.startGameButton.hidden {
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
 }
 
 .startGameButton,
