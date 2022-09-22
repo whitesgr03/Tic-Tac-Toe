@@ -173,7 +173,8 @@ main {
 }
 
 .character,
-.opponentButtons {
+.opponentButtons,
+.player {
     width: 120px;
 }
 
