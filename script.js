@@ -15,6 +15,7 @@ const controller = (() => {
     // bind events
     opponentButtons.addEventListener('click', chooseOpponent)
     messageButton.addEventListener('click', reselectOpponent)
+    startGameButton.addEventListener('click', startGame)
 
     
     function chooseOpponent(e) {
@@ -57,9 +58,12 @@ const controller = (() => {
     }
 
     function reselectOpponent() {
-        opponentButtons.style.display = 'flex'
-        characters.lastElementChild.remove()
+        opponentButtons.style.display = 'flex';
+
+        characters.lastElementChild.remove();
+
         startGameButton.classList.add('hidden');
+
         this.textContent = 'choose your opponent';
 
         for (let i = 0; i < editNameButtons.length; i++) {
@@ -98,6 +102,13 @@ const controller = (() => {
         for (let item of list) {
             item.addEventListener(event, listener)
         }
+    }
+
+    function startGame() {
+        const menu = document.querySelector('.menu')
+        const backgroundBlurEffect = document.querySelector('.backgroundBlurEffect')
+        menu.style.display = 'none'
+        backgroundBlurEffect.classList.remove('active')
     }
 
 
