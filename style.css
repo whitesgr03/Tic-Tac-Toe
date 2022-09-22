@@ -34,6 +34,7 @@ button {
     outline: none;
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 p, button {
@@ -128,8 +129,7 @@ main {
     width: 1rem;
     height: 1rem;
     transform: translateY(-50%);
-    background-image: url(./pencil.svg);
-    cursor: pointer;
+    background-image: url(./img/pencil.svg);
 }
 
 .versus {
@@ -156,11 +156,11 @@ main {
 }
 
 .character .confirmButton {
-    background-image: url(./check-bold.svg);
+    background-image: url(./img/check-bold.svg);
 }
 
 .character .cancelButton {
-    background-image: url(./close-thick.svg);
+    background-image: url(./img/close-thick.svg);
 }
 
 .opponentButtons {
@@ -228,10 +228,6 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-}
-
-.player {
-    flex: 0 0 100px;
 }
 
 .gameBoard {
