@@ -13,50 +13,30 @@
         <!-- menu selector opponent -->
         <div class="menu">
             <h1 class="title">Tic Tac Toe</h1>
-            <p class="message">choose your opponent</p>
+            <button type="button" class="messageButton">choose your opponent</button>
             <div class="characters">
-                <div class="character">
-                    <img src="./player.svg" alt="Player 1 avatar" class="avatar">
-                    <div class="name">
-                        <p>Player 1</p>
+                <div class="character player">
+                    <img src="./img/player.svg" alt="Player 1 avatar" class="avatar">
+                    <div >
+                        <p class="firstPlayerName">Player 1</p>
                         <button type="button" class="editNameButton"></button>
                     </div>
-                    <!-- <div class="field">
-                        <input type="text" value="Player 1" data-player="X" maxlength="8">
+                    <div class="field">
+                        <input class="nameField" type="text" value="Player 1" data-player="X" maxlength="8">
                         <div class="fieldButtons">
                             <button type="button" class="confirmButton"></button>
                             <button type="button" class="cancelButton"></button>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
                 <p class="versus">VS</p>
 
                 <div class="opponentButtons">
-                    <button type="button" data-opponent="player">Player</button>
-                    <button type="button" data-opponent="robot">Computer</button>
+                    <button type="button" data-opponent="player 2">Player</button>
+                    <button type="button" data-opponent="com">Computer</button>
                 </div>
-
-                <!-- <div class="character player">
-                    <img src="./player.svg" alt="Player 2 avatar" class="avatar">
-                    <div class="name">
-                        <p>Player 2</p>
-                        <button type="button" class="editNameButton"></button>
-                    </div>
-                    <div class="field">
-                        <input type="text" value="Player 2" data-player="O" maxlength="8">
-                        <div class="fieldButtons">
-                            <button type="button" class="confirmButton"></button>
-                            <button type="button" class="cancelButton"></button>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="character robot">
-                    <img src="./robot.svg" alt="computer" class="avatar">
-                    <p class="name">Com</p>
-                </div> -->
             </div>
-            <button type="button" class="startGameButton">Start Game</button>
+            <button type="button" class="startGameButton hidden">Start Game</button>
         </div>
 
         <!-- settlement message -->
