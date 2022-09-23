@@ -19,15 +19,22 @@ const controller = (() => {
 
     
     function chooseOpponent(e) {
+
+        if (e.target === this) {
+            return
+        }
+
         const secondRow = document.querySelector('.secondRow')
         let characterTemplate = null;
         let secondRowTemplate = null;
         
         let div = document.createElement('div')
 
-        playerName[1] = e.target.dataset.opponent;
+        const name = e.target.dataset.opponent[0].toUpperCase() + e.target.dataset.opponent.slice(1);
+
+        playerName[1] = name;
         
-        if (playerName[1] === 'player 2') {
+        if (playerName[1] === 'Player 2') {
             characterTemplate = `
                 <div class="character player">
                     <img src="./img/player.svg" alt="Player 2 avatar" class="avatar">
@@ -77,6 +84,9 @@ const controller = (() => {
     }
 
     function reselectOpponent() {
+        if (!messageButton.classList.contains('reselect')) {
+            return
+        }
         opponentButtons.style.display = 'flex';
 
         characters.lastElementChild.remove();
@@ -94,6 +104,8 @@ const controller = (() => {
         playerName[0] = 'Player 1'
         renderPlayerName();
     }
+
+
 
     function init() {
         fields = document.querySelectorAll('.nameField');
@@ -124,12 +136,18 @@ const controller = (() => {
     }
 
     function startGame() {
-        const menu = document.querySelector('.menu')
-        const backgroundBlurEffect = document.querySelector('.backgroundBlurEffect')
-        menu.style.display = 'none'
-        backgroundBlurEffect.classList.remove('active')
+        const menu = document.querySelector('.menu');
+        const backgroundBlurEffect = document.querySelector('.backgroundBlurEffect');
+
+        menu.style.display = 'none';
+        backgroundBlurEffect.classList.remove('active');
+
+        gameBoard();
     }
 
+    function getPlayerName() {
+        return playerName;
+    }
 
     // render name
     function renderPlayerName() {
@@ -181,6 +199,11 @@ const controller = (() => {
 
         playerName[index] = name;
         renderPlayerName();
+    }
+
+
+    return {
+        getPlayerName,
     }
 
 })()
