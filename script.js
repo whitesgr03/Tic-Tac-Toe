@@ -208,19 +208,117 @@ const controller = (() => {
 
 })()
 
+const gameBoard = () => {
+    
+    let firstPlayer = true;
+    let winner = null;
+    let symbols = [];
 
-            for (let player of players) {
-                player.classList.remove('mover');
-            }
+    for (let i = 0; i < 3; i++) {
+        symbols.push(Array.from({ length: 3 }))
+    }
 
-            if (!winner) {
-                gameSettlement.innerHTML = `<h2>It's a Draw</h2>`
+    // cache DOM
+    const cell = Array.from(document.querySelectorAll('.cell'));
+    const gameBoard = document.querySelector('.gameBoard');
+    const backgroundBlurEffect = document.querySelector('.backgroundBlurEffect')
+    const gameSettlement = document.querySelector('.settlementMessage')
+    const players = document.querySelectorAll('.secondRow .player') 
+    const score = document.querySelectorAll('.score')
+    const round = document.querySelector('.round')
+    const resetButton = document.querySelector('.resetButton');
+    const menuButton = document.querySelector('.menuButton')
+
+
+
+    // bind events
+    gameBoard.addEventListener('click', addSymbols);
+    resetButton.addEventListener('click', startNewRound);
+    menuButton.addEventListener('click', restartGame)
+
+    function addSymbols(e) {
+        if (
+            !e.target.classList.contains('cell') ||
+            e.target.textContent
+        ) {
+            return
+        }
+        let gameSymbol = null;
+        const cellIndex = cell.findIndex(item => item === e.target)
+
+
+        if (firstPlayer) {
+            gameSymbol = 'X'
+        } else {
+            gameSymbol = 'O'
+        }
+        
+        let row = null;
+        let index = null;
+
+        if (cellIndex <= 2) {
+            row = 0;
+            index = cellIndex;
+        } else if (cellIndex >= 6){
+            row = 2;
+            index = cellIndex - 6
+        } else {
+            row = 1;
+            index = cellIndex - 3
+        }
+        
+        symbols[row][index] = gameSymbol;
+
+        for (let player of players) {
+            player.classList.toggle('mover');
+        }
+
+        renderSymbols();
+        showWinner();
+
+        firstPlayer = !firstPlayer;        
+    }
+
+    function renderSymbols() {
+        for (let i = 0; i < symbols.length; i++){
+            cell[i * 3 + 0].textContent = symbols[i][0]
+            cell[i * 3 + 1].textContent = symbols[i][1]
+            cell[i * 3 + 2].textContent = symbols[i][2]
+        }
+    }
+
+    function showWinner() {
+
+        // check each row line
+        checkLine(symbols)
+
+        // check each column line
+        checkLine(createLine('column'));
+
+        // check each Slant Line
+        checkLine(createLine('slant'));
+
+        checkGameTie(createLine())
+
+        if (winner !== null) {
+
+            backgroundBlurEffect.classList.add('active');
+            gameSettlement.classList.add('active');
+
+            if (winner) {
+                const names = controller.getPlayerName()
+                const player = {
+                    'X': 0,
+                    'O': 1,
+                }
+                gameSettlement.firstElementChild.innerHTML = 'The Winner is <span></span>';
+                gameSettlement.firstElementChild.firstElementChild.textContent = names[player[winner]];
+                score[player[winner]].textContent = +score[player[winner]].textContent + 1
             } else {
-                gameSettlement.innerHTML = `<h2>The winner is</h2><h1>${names[winner]}</h1>`
-                addScore(winner);
+                gameSettlement.firstElementChild.innerHTML = "It's a Draw";
             }
+            round.textContent = +round.textContent + 1
             
-            addRound();
         }
     }
 
@@ -275,36 +373,30 @@ const controller = (() => {
         }
     }
 
-    function addRound() {
-        const round = score.previousElementSibling;
+    function startNewRound() {
+        const mover = document.querySelector('.mover')
 
-        currentRound++
-        round.textContent = `Round ${currentRound}`
-    }
+        backgroundBlurEffect.classList.remove('active');
+        gameSettlement.classList.remove('active');
 
-    function addScore(winner) {
-        const player = {
-            'X': score.firstElementChild,
-            'O': score.lastElementChild,
+        symbols.length = 0;
+
+        for (let i = 0; i < 3; i++) {
+            symbols.push(Array.from({ length: 3 }))
         }
-            
-        currentScore[winner]++
-        player[winner].textContent = `${names[winner]} : ${currentScore[winner]}`
+        winner = null;
+        firstPlayer = true;
+        mover.classList.remove('mover')
+        players[0].classList.toggle('mover');
+        renderSymbols();
     }
 
     function restartGame() {
-
         if (confirm('Do you want to restart game?')) {
-            const round = score.previousElementSibling;
-            const player1Score = score.firstElementChild;
-            const player2Score = score.lastElementChild;
-
-            round.textContent = `Round 1`
-            player1Score.textContent = `${names[winner]} : 0`;
-            player2Score.textContent = `${names[winner]} : 0`;
-
-            resetGame();
-            parent.classList.add('active')
+            window.location.reload();
         }
     }
-})()
+}
+
+
+
