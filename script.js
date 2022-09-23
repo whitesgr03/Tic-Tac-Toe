@@ -141,8 +141,8 @@ const controller = (() => {
 
         menu.style.display = 'none';
         backgroundBlurEffect.classList.remove('active');
-
-        gameBoard();
+        
+        gameBoards();
     }
 
     function getPlayerName() {
@@ -208,7 +208,7 @@ const controller = (() => {
 
 })()
 
-const gameBoard = () => {
+const gameBoards = () => {
     
     let firstPlayer = true;
     let winner = null;
@@ -223,13 +223,11 @@ const gameBoard = () => {
     const gameBoard = document.querySelector('.gameBoard');
     const backgroundBlurEffect = document.querySelector('.backgroundBlurEffect')
     const gameSettlement = document.querySelector('.settlementMessage')
-    const players = document.querySelectorAll('.secondRow .player') 
+    const players = document.querySelectorAll('.secondRow .player')
     const score = document.querySelectorAll('.score')
     const round = document.querySelector('.round')
     const resetButton = document.querySelector('.resetButton');
     const menuButton = document.querySelector('.menuButton')
-
-
 
     // bind events
     gameBoard.addEventListener('click', addSymbols);
@@ -237,6 +235,7 @@ const gameBoard = () => {
     menuButton.addEventListener('click', restartGame)
 
     function addSymbols(e) {
+
         if (
             !e.target.classList.contains('cell') ||
             e.target.textContent
@@ -259,7 +258,7 @@ const gameBoard = () => {
         if (cellIndex <= 2) {
             row = 0;
             index = cellIndex;
-        } else if (cellIndex >= 6){
+        } else if (cellIndex >= 6) {
             row = 2;
             index = cellIndex - 6
         } else {
@@ -268,7 +267,6 @@ const gameBoard = () => {
         }
         
         symbols[row][index] = gameSymbol;
-
         for (let player of players) {
             player.classList.toggle('mover');
         }
@@ -276,11 +274,11 @@ const gameBoard = () => {
         renderSymbols();
         showWinner();
 
-        firstPlayer = !firstPlayer;        
+        firstPlayer = !firstPlayer;
     }
 
     function renderSymbols() {
-        for (let i = 0; i < symbols.length; i++){
+        for (let i = 0; i < symbols.length; i++) {
             cell[i * 3 + 0].textContent = symbols[i][0]
             cell[i * 3 + 1].textContent = symbols[i][1]
             cell[i * 3 + 2].textContent = symbols[i][2]
@@ -355,11 +353,11 @@ const gameBoard = () => {
             if (line.every(symbol => symbol === 'X')) {
                 winner = 'X'
                 return
-            } 
+            }
 
             if (line.every(symbol => symbol === 'O')) {
                 winner = 'O'
-            } 
+            }
         });
     }
 
@@ -375,7 +373,7 @@ const gameBoard = () => {
 
     function startNewRound() {
         const mover = document.querySelector('.mover')
-
+        
         backgroundBlurEffect.classList.remove('active');
         gameSettlement.classList.remove('active');
 
@@ -386,8 +384,9 @@ const gameBoard = () => {
         }
         winner = null;
         firstPlayer = true;
+        
         mover.classList.remove('mover')
-        players[0].classList.toggle('mover');
+        players[0].classList.add('mover');
         renderSymbols();
     }
 
@@ -396,7 +395,5 @@ const gameBoard = () => {
             window.location.reload();
         }
     }
-}
 
-
-
+};
