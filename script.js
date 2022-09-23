@@ -105,8 +105,6 @@ const controller = (() => {
         renderPlayerName();
     }
 
-
-
     function init() {
         fields = document.querySelectorAll('.nameField');
 
@@ -397,3 +395,53 @@ const gameBoards = () => {
     }
 
 };
+
+
+
+// 先把原計劃做完, 並push
+
+// 然後開分支重構以下內容
+
+// 另一個想法是
+
+// 選單為一個模組, 是為了搜集建立人物的資料, 就是姓名
+
+// 人物為一個工廠函式
+
+// 按下開始遊戲後, 才調用人物工廠函式創建 2 個角色, 並且透過選單獲取姓名及預設分數 0,
+
+    // 按下開始遊戲後也建立 game board, 任何使要用名字的地方都可以用人物的輸出 method
+
+    // 任何分數也透過人物的 method 進行變更或獲取
+
+// 總共是一個  controller 模組, 一個 player 工廠函式, 一個一般 game board 函式
+
+
+
+
+
+
+// 測試一下拿來檢測 symbol 二維陣列
+
+// let array =  [['banana', 1], ['orange', 2], ['meat', 4]]
+
+// array.map(entry => [entry[0], entry[1] * 2]);			<— 使用 map() 處理二維陣列計算
+
+// [['banana', 2], ['orange', 4], ['meat', 8]]
+
+// Destructuring assignment 解構賦值
+
+// let arr = ["John", "Smith"]
+
+// let [firstName, surname] = arr;
+
+
+/// 以下等複習完再繼續 ///
+
+// 選擇對手後, 將 choose your opponent 改成重新選擇
+
+// 接著將 UI 恢復
+
+// 選擇 COM 之後, 讓 COM 每回合自動在 symbols 是 undefiined 的地方插入圈圈符號
+
+// 隨機插入直到遊戲結束
