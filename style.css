@@ -235,6 +235,14 @@ main {
     row-gap: 30px;
 }
 
+.scoreBoard .menuButton {
+    background-image: url(./img/set.svg);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    vertical-align: bottom;
+}
+
 .scoreBoard div {
     display: flex;
     column-gap: 100px;
