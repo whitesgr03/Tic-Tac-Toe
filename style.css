@@ -202,9 +202,9 @@ main {
     align-items: center;
     flex-direction: column;
     z-index: 1;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
+
+.settlementMessage.active {
+    display: flex;
 }
 
 .settlementMessage .message{
