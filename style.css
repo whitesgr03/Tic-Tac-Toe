@@ -34,7 +34,6 @@ button {
     outline: none;
     border: none;
     background-color: transparent;
-    cursor: pointer;
 }
 
 p, button {
@@ -55,15 +54,10 @@ main {
     position: relative;
 }
 
-
-.backgroundBlurEffect {
-    display: none;
-}
-
 .backgroundBlurEffect.active {
     display: block;
     position: fixed;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(8px);
     background-color: rgba(0, 0, 0, .7);
     top: 0;
     left: 0;
@@ -74,9 +68,6 @@ main {
 
 /* menu */
 .menu {
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
     position: absolute;
     top: 0;
     left: 0;
@@ -102,6 +93,7 @@ main {
     font-style: italic;
     color: var(--option-button-color);
     border-bottom: 1px solid var(--option-button-color);
+    cursor: pointer;
 }
 
 .characters {
@@ -186,8 +178,6 @@ main {
     display: block;
 }
 
-
-
 /*⬆︎ menu ⬆︎*/ 
 
 .settlementMessage {
@@ -197,11 +187,12 @@ main {
     bottom: 0;
     right: 0;
     margin: auto;
-    display: flex;
+    display: none;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     z-index: 1;
+}
 
 .settlementMessage.active {
     display: flex;
@@ -272,7 +263,7 @@ main {
     font-size: 4rem;
     font-family: 'Montserrat';
 }
-/* 
+
 
 .mover {
     filter: invert(73%) sepia(62%) saturate(392%) hue-rotate(332deg) brightness(99%) contrast(99%);
